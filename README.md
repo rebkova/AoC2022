@@ -1,6 +1,7 @@
 # AoC2022
 
 TILs:
+\n
 :star: Day03: 
 - readFileSync inbuilt node module can be used for synchronous reading of data
 - .codeCharAt() method on string returns a decimal value of a character according to ASCII table
