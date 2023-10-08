@@ -3,7 +3,6 @@ const data = fs.readFileSync("data_day05.txt", 'utf8');
 
 let dataAsArray = data.toString().split(/\r?\n/);
 const instruction = dataAsArray.map(data => data.split(' '));
-// console.log('instruction:', instruction);
 
 // TEST
 // let crateStack = [
@@ -23,45 +22,28 @@ const crateStack = [
   ['L', 'G', 'B', 'V']
 ];
 
-// console.log('crateStack:', crateStack);
-
-
 // loop through all instructions
 for (i = 0; i <= instruction.length-1; i++) {
   const xTimes = parseInt(instruction[i].at(1), 10);
-  // console.log('---- new instruction -----')
-  // console.log('xTimes:', xTimes);
   const from = parseInt(instruction[i].at(3), 10);
-  // console.log('from:', from, typeof(from));
   const to = parseInt(instruction[i].at(5), 10);
-  // console.log('to:', to, typeof(to));
-  // console.log('i', i);
+
   // for every instruction change the crateStack
-  for (j = xTimes; j > 0; j--) {
-    // console.log('j:', j);
-    // console.log('crateStack before pop', crateStack);
+  for (j = xTimes; j > 0; j--) {;
     let crate = crateStack[from-1].pop();
-    // console.log('crate:', crate)
     crateStack[to-1].push(crate);
-    // console.log('crateStack after push', crateStack);
   }
 }
 const finalCrateStack = [...crateStack];
 console.log('final crateStack:', finalCrateStack);
 
-// return crateStack;
-
-let concatedCrates = '';
+let concatedCrates = [];
 let lastCrate = '';
 // concat the last crates of every stack
 for (i = 0; i <= crateStack.length-1; i++) {
-  console.log('crateStack[i]:', crateStack[i]);
   lastCrate = crateStack[i].pop();
-  console.log('lastCrate:', typeof(lastCrate));
-  concatedCrates.concat(lastCrate);
-  console.log('concatCrates:', concatCrates);
+  concatedCrates.push(lastCrate);
 }
-
-// Q: why is concatCrates undefined?
+console.log('concatedCrates:', concatedCrates.join(''));
 
 // solution pt 1: ZRLJGSCTR
